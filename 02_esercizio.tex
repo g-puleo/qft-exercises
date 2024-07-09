@@ -1,0 +1,331 @@
+\section{Exercise 2: Conserved charges of two scalar
+fields}
+\subsection{Generalization of the symmetry studied in class for one complex scalar field}
+We are given the action:
+\begin{equation}
+    S = \int d^4 x \partial_\mu \phi_a^\star \partial^{\mu}\phi_a + \partial_\mu \phi_b^\star \partial^\mu \phi_b  - m^2 (\phi_a^\star \phi_a + \phi_b^\star \phi_b ) 
+\end{equation}
+Let
+\begin{equation}
+    \Phi = 
+    \begin{pmatrix}
+        \phi_a \\
+        \phi_b \\
+    \end{pmatrix}\in \mathbb C^2.
+\end{equation}
+
+$S$ is invariant under the following global transofmration:
+\begin{equation}
+    \Phi \mapsto \Phi' = e^{i\theta}\Phi , 
+\end{equation}
+which is an \textit{internal} symmetry.
+According to Noether's theorem the corresponding conserved current is 
+\begin{equation}
+    j^\mu_a = -\frac{\partial \mathcal L}{\partial ( \partial_\mu \phi_k)} F_{k,a} \label{eq:conservedcurrent}
+\end{equation}
+where $F_k$ are found by expanding the variation of the fields to the first order in $\theta$:
+\begin{align*}
+\delta \phi_a = \phi'_a - \phi_a &= e^{i\theta } \phi_a - \phi_a \approx i \theta \phi_a = \theta F_0 \\
+\delta \phi_a^\star = \phi_a'~^\star - \phi_a^\star &= e^{-i\theta } \phi_a^\star - \phi_a^\star \approx -i \theta \phi_a^\star = \theta F_1 \\
+\delta \phi_b = \phi'_b - \phi_b &= e^{i\theta } \phi_b - \phi_b \approx i \theta \phi_b = \theta F_2 \\
+\delta \phi_b^\star = \phi_b'~^\star - \phi_b^\star &= e^{-i\theta } \phi_b^\star - \phi_b^\star \approx -i \theta \phi_b^\star = \theta F_3
+\end{align*}
+Let $\phi_a = \phi_0$, $\phi_a ^\star= \phi_1$,
+$\phi_b = \phi_2$, $\phi_b ^\star= \phi_3$,
+The derivatives of the Lagrangian are 
+\begin{align}
+    \frac{\partial \mathcal L}{\partial(\partial_\mu \phi_a)}= \partial^\mu \phi_a^\star~~;~~~~
+    \frac{\partial \mathcal L}{\partial(\partial_\mu \phi_a^\star)}= \partial^\mu \phi_a \label{eq:dLddmuphiA} \\
+        \frac{\partial \mathcal L}{\partial(\partial_\mu \phi_b)}= \partial^\mu \phi_b^\star~~;~~~~
+    \frac{\partial \mathcal L}{\partial(\partial_\mu \phi_b^\star)}= \partial^\mu \phi_b\label{eq:dLddmuphiB}
+\end{align}
+These expressions can be plugged into \eqref{eq:conservedcurrent} to find:
+\begin{equation}
+    j^\mu = - i \left[(\partial^\mu \phi_a^\star)\phi_a- (\partial^\mu \phi_a) \phi_a^\star + (\partial ^\mu \phi_b^\star) \phi_b - (\partial ^\mu \phi_b ) \phi_b^\star\right],
+\end{equation}
+the corresponding conserved charge is
+\begin{equation}
+    Q = \int d^3 x j^0
+\end{equation}
+We make sense of this by promoting the fields to operators
+and normal ordering:
+\begin{equation}
+j^\mu = : -i \left[ (\partial^\mu \hat{\phi}_a^\dagger)\hat{\phi}_a - (\partial^\mu \hat{\phi}_a)\hat{\phi}_a^\dagger + (\partial^\mu \hat{\phi}_b^\dagger)\hat{\phi}_b - (\partial^\mu \hat{\phi}_b)\hat{\phi}_b^\dagger  \right]:
+\label{eq:conserved_charge_0}
+\end{equation}
+Let's first compute the \(\partial^0\) derivatives for the non-dagger terms of \(\hat{\phi}_a\) and \(\hat{\phi}_b\). We will use the following expressions:
+
+\begin{equation}
+\hat{\phi}_a (x) = \frac{1}{(2\pi)^3} \int \frac{d^3 p}{\sqrt{2E_p}} \left( \hat{\alpha}_a (p) e^{-ip\cdot x} + \hat{\beta}_a^\dagger (p) e^{ip\cdot x} \right)_{\text{on shell}}
+\label{eq:phia}
+\end{equation}
+
+\begin{equation}
+\hat{\phi}_b (x) = \frac{1}{(2\pi)^3} \int \frac{d^3 p}{\sqrt{2E_p}} \left( \hat{\alpha}_b (p) e^{-ip\cdot x} + \hat{\beta}_b^\dagger (p) e^{ip\cdot x} \right)_{\text{on shell}}
+\label{eq:phib}
+\end{equation}
+In the following, the fact that the integrals are evaluated on-shell is implied.
+
+\begin{align}
+\partial^0 \hat{\phi}_a (x) &=  \frac{1}{(2\pi)^3} \int \frac{d^3 p}{\sqrt{2E_p}} \left( -iE_p \hat{\alpha}_a (p) e^{-ip\cdot x} + iE_p \hat{\beta}_a^\dagger (p) e^{ip\cdot x} \right) \\
+&= \frac{1}{(2\pi)^3} \int \frac{d^3 p}{\sqrt{2E_p}} \left( iE_p \left(\hat{\beta}_a^\dagger (p) e^{ip\cdot x} - \hat{\alpha}_a (p) e^{-ip\cdot x}\right) \right)
+\label{eq:timederivative_of_phia}
+\end{align}
+Similarly, 
+\begin{equation}
+\partial^0 \hat{\phi}_b (x) = \frac{1}{(2\pi)^3} \int \frac{d^3 p}{\sqrt{2E_p}} \left( iE_p \left(\hat{\beta}_b^\dagger (p) e^{ip\cdot x} - \hat{\alpha}_b (p) e^{-ip\cdot x}\right) \right)
+\label{eq:timederivative_of_phib}
+\end{equation}
+Now we can use these to evaluate the $a$ term of $j^0$, namely
+\begin{equation}:(\partial^0 \hat{\phi}_a^\dagger)\hat{\phi}_a-(\partial^0 \hat{\phi}_a)\hat{\phi}_a^\dagger:\label{eq:a_term}\end{equation}
+\begin{align*}
+(\partial^0 \hat{\phi}_a^\dagger)(x) \hat{\phi}_a (x) &= \frac{1}{(2\pi)^6} \int \frac{d^3 p'}{\sqrt{2E_{p'}}} \int \frac{d^3 p}{\sqrt{2E_p}} \left( iE_{p'} \hat{\alpha}_a^\dagger (p') e^{ip'\cdot x} - iE_{p'} \hat{\beta}_a (p') e^{-ip'\cdot x} \right)  \\ &\times \left( \hat{\alpha}_a (p) e^{-ip\cdot x} + \hat{\beta}_a^\dagger (p) e^{ip\cdot x} \right)
+\end{align*}
+Expanding the product and combining the exponentials, we get
+\begin{align*}
+(\partial^0 \hat{\phi}_a^\dagger)(x) \hat{\phi}_a (x) &= \frac{1}{(2\pi)^6} \int \frac{d^3 p'}{\sqrt{2E_{p'}}} \int \frac{d^3 p}{\sqrt{2E_p}} \left[ iE_{p'} \hat{\alpha}_a^\dagger (p') \hat{\alpha}_a (p) e^{i(p' - p) \cdot x} +  iE_{p'} \hat{\alpha}_a^\dagger (p') \hat{\beta}_a^\dagger (p) e^{i(p' + p) \cdot x} \right .\\
+& - \left .iE_{p'} \hat{\beta}_a (p') \hat{\alpha}_a (p) e^{-i(p' + p) \cdot x} - iE_{p'} \hat{\beta}_a (p') \hat{\beta}_a^\dagger (p) e^{-i(p' - p) \cdot x} \right]
+\end{align*}
+To compute eq. \eqref{eq:a_term} we see that we must take the last expression and subtract its own hermitian conjugate and normal-order the result:
+\begin{align*}
+&:(\partial^0 \hat{\phi}_a^\dagger)\hat{\phi}_a-(\partial^0 \hat{\phi}_a)\hat{\phi}_a^\dagger:  \\ 
+&= \frac{1}{(2\pi)^6} \int \frac{d^3 p'}{\sqrt{2E_{p'}}} \int \frac{d^3 p}{\sqrt{2E_p}} \left[ iE_{p'} \hat{\alpha}_a^\dagger (p') \hat{\alpha}_a (p) e^{i(p' - p) \cdot x} +  iE_{p'} \hat{\alpha}_a^\dagger (p') \hat{\beta}_a^\dagger (p) e^{i(p' + p) \cdot x} \right .\\
+& - iE_{p'} \hat{\beta}_a (p') \hat{\alpha}_a (p) e^{-i(p' + p) \cdot x} - iE_{p'} \hat{\beta}_a (p') \hat{\beta}_a^\dagger (p) e^{-i(p' - p) \cdot x} 
++\\
+%%% hermitian conjugate
+&+iE_{p'} \hat{\alpha}_a^\dagger (p') \hat{\alpha}_a (p) e^{-i(p' - p) \cdot x} +  iE_{p'} \hat{\alpha}_a (p') \hat{\beta}_a (p) e^{-i(p' + p) \cdot x}  \\
+&  - \left .iE_{p'} \hat{\beta}_a^\dagger (p') \hat{\alpha}_a^\dagger (p) e^{+i(p' + p) \cdot x} - iE_{p'} \hat{\beta}_a^\dagger (p') \hat{\beta}_a (p) e^{+i(p' - p) \cdot x} 
+\right]
+\end{align*}
+Then note that upon integration in $d^3 x$ we get Dirac deltas as follows:
+\begin{equation}
+\begin{split}
+    \int d^3 x ~ e^{-i(p\pm p')\cdot x} = (2\pi)^3 \delta_{(3)}(\vec p\pm {\vec p}~') e^{-i (E_p\pm E_{p'})t}\\
+    \int d^3 x ~ e^{+i(p\pm p')\cdot x} = (2\pi)^3 \delta_{(3)}(\vec p\pm {\vec p}~') e^{+i (E_p\pm E_{p'})t}
+\end{split}
+\end{equation}
+We can plug this in and get
+\begin{align*}
+&\int d^3 x:(\partial^0 \hat{\phi}_a^\dagger)\hat{\phi}_a-(\partial^0 \hat{\phi}_a)\hat{\phi}_a^\dagger:  \\ 
+&= :\frac{1}{(2\pi)^6} \int \frac{d^3 p'}{\sqrt{2E_{p'}}} \int \frac{d^3 p}{\sqrt{2E_p}} (2\pi)^3 \Bigg[ iE_{p'} \hat{\alpha}_a^\dagger (p') \hat{\alpha}_a (p)   \delta_{(3)}(\vec{p} - \vec{p'}) e^{i(E_{p'} - E_p)t} \\
+&+  iE_{p'} \hat{\alpha}_a^\dagger (p') \hat{\beta}_a^\dagger (p)   \delta_{(3)}(\vec{p} + \vec{p'}) e^{i(E_{p'} + E_p)t} - iE_{p'} \hat{\beta}_a (p') \hat{\alpha}_a (p)   \delta_{(3)}(\vec{p} + \vec{p'}) e^{-i(E_{p'} + E_p)t} \\
+&- iE_{p'} \hat{\beta}_a (p') \hat{\beta}_a^\dagger (p)   \delta_{(3)}(\vec{p} - \vec{p'}) e^{-i(E_{p'} - E_p)t} + iE_{p'} \hat{\alpha}_a^\dagger (p') \hat{\alpha}_a (p)   \delta_{(3)}(\vec{p} - \vec{p'}) e^{-i(E_{p'} - E_p)t} \\
+&+ iE_{p'} \hat{\alpha}_a (p') \hat{\beta}_a (p)   \delta_{(3)}(\vec{p} + \vec{p'}) e^{-i(E_{p'} + E_p)t} - iE_{p'} \hat{\beta}_a^\dagger (p') \hat{\alpha}_a^\dagger (p)   \delta_{(3)}(\vec{p} + \vec{p'}) e^{i(E_{p'} + E_p)t} \\
+&- iE_{p'} \hat{\beta}_a^\dagger (p') \hat{\beta}_a (p)   \delta_{(3)}(\vec{p} - \vec{p'}) e^{i(E_{p'} - E_p)t} \Bigg]:
+\end{align*}
+Integration over $\vec {p}~'$ yields 
+\begin{align*}
+&= \frac{1}{(2\pi)^3} \int \frac{d^3 p}{2E_p} \Bigg[ iE_p \hat{\alpha}_a^\dagger (p) \hat{\alpha}_a (p) + \cancel{ iE_p \hat{\alpha}_a^\dagger (-p) \hat{\beta}_a^\dagger (p) e^{i(2E_p)t}} \bcancel{- iE_p \hat{\beta}_a (-p) \hat{\alpha}_a (p) e^{-i(2E_p)t}} - iE_p \hat{\beta}_a (p) \hat{\beta}_a^\dagger (p) \\
+&+ iE_p \hat{\alpha}_a^\dagger (p) \hat{\alpha}_a (p) +  \bcancel{ iE_p \hat{\alpha}_a (-p) \hat{\beta}_a (p) e^{-i(2E_p)t}} -     \cancel{ iE_p \hat{\beta}_a^\dagger (-p) \hat{\alpha}_a^\dagger (p) e^{i(2E_p)t}}- iE_p \hat{\beta}_a^\dagger (p) \hat{\beta}_a (p) \Bigg]
+\end{align*}
+Finally we have:
+\begin{equation}
+\begin{split}
+     \int d^3 x:(\partial^0 \hat{\phi}_a^\dagger)\hat{\phi}_a-(\partial^0 \hat{\phi}_a)\hat{\phi}_a^\dagger: & = \frac{i}{(2\pi)^3} \int d^3 p \Bigg[ \hat{\alpha}_a^\dagger (p) \hat{\alpha}_a (p) - \hat{\beta}_a (p) \hat{\beta}_a^\dagger (p)    \Bigg]\\ &=i (N_{\alpha,a}-N_{\beta, a}) 
+     \end{split}
+\end{equation}
+where we labeled the number operators for particles and antiparticles of kind $a$ as $N_{\alpha, a}$ and $N_{\beta, a}$ respectively.
+The computation of the contribution from $\hat \phi_b$ to the conserved charge would be identical. 
+Eventually, we resurrect the $-i$ factor in front of eq. \eqref{eq:conserved_charge_0} and get
+\begin{equation}
+    \hat Q = \hat N_{\alpha, a}+ \hat  N_{\alpha, b}
+-  \hat N  _{\beta, a}- \hat N_{\beta,b} \end{equation}
+\subsection{Symmetry under SU(2) transformation}
+I observe that acting a unitary transformation $U\in {\rm SU}(2)$ on $\Phi$ will leave the inner product term $(\phi_a^\star \phi_a + \phi_b^\star \phi_b )$ unchanged. 
+The mass term of the action is therefore invariant under such transformation. 
+Let's check that this is also true for the partial-derivative term, which we denote as $\mathcal L^{(a)}$.   $U$ can be written as:
+\[
+U = \begin{pmatrix}
+a & -b^\star \\ b & a^\star
+ \end{pmatrix}
+ \]
+with $\abs{a}^2 + \abs{b}^2=1$. 
+Let 
+\[\begin{pmatrix}\phi_a' \\ \phi_b'\end{pmatrix} = U\Phi\]
+Since $U$ is unitary, he inverse of \( U \) is
+\( U^{-1} = U^\dagger \):
+   \[
+   U^\dagger = \begin{pmatrix}
+   a^\star & b^\star \\ 
+   -b & a
+   \end{pmatrix}
+   \]
+Using the inverse transformation, we can express \(\phi_a\) and \(\phi_b\) in terms of the primed fields: 
+   \[
+   \Phi = U^\dagger \Phi' = \begin{pmatrix}
+   a^\star & b^\star \\ 
+   -b & a
+   \end{pmatrix} \begin{pmatrix}
+   \phi_a' \\ 
+   \phi_b'
+   \end{pmatrix}
+   \]
+   This yields:
+   \[
+   \phi_a = a^\star \phi_a' + b^\star \phi_b'
+   \]
+   \[
+   \phi_b = -b \phi_a' + a \phi_b'
+   \]
+Express \( \mathcal L^{(a)}\) in terms of \(\phi_a'\) and \(\phi_b'\):
+   The original Lagrangian is:
+   \[
+   \mathcal L^{(a)} = \partial_\mu \phi_a^\star \partial^\mu \phi_a + \partial_\mu \phi_b^\star \partial^\mu \phi_b
+   \]
+   Substitute the expressions for \(\phi_a\) and \(\phi_b\) in terms of the primed fields:
+   \[
+   \partial_\mu \phi_a = \partial_\mu (a^\star \phi_a' + b^\star \phi_b') = a^\star \partial_\mu \phi_a' + b^\star \partial_\mu \phi_b'
+   \]
+   \[
+   \partial_\mu \phi_b = \partial_\mu (-b \phi_a' + a \phi_b') = -b \partial_\mu \phi_a' + a \partial_\mu \phi_b'
+   \]
+   Thus,
+   \[
+   \partial_\mu \phi_a^\star = (a^\star \partial_\mu \phi_a' + b^\star \partial_\mu \phi_b')^\star = a \partial_\mu \phi_a'^\star + b \partial_\mu \phi_b'^\star
+   \]
+   \[
+   \partial_\mu \phi_b^\star = (-b \partial_\mu \phi_a' + a \partial_\mu \phi_b')^\star = -b^\star \partial_\mu \phi_a'^\star + a^\star \partial_\mu \phi_b'^\star
+   \]
+   Now, substitute these into \(\mathcal L^{(a)}\):
+   \[
+   \mathcal L^{(a)} = (a \partial_\mu \phi_a'^\star + b \partial_\mu \phi_b'^\star)(a^\star \partial^\mu \phi_a' + b^\star \partial^\mu \phi_b') + (-b^\star \partial_\mu \phi_a'^\star + a^\star \partial_\mu \phi_b'^\star)(-b \partial^\mu \phi_a' + a \partial^\mu \phi_b')
+   \]
+   Simplifying each term:
+   \[
+   \mathcal L^{(a)} = |a|^2 \partial_\mu \phi_a'^\star \partial^\mu \phi_a' + a b^\star \partial_\mu \phi_a'^\star \partial^\mu \phi_b' + a^\star b \partial_\mu \phi_b'^\star \partial^\mu \phi_a' + |b|^2 \partial_\mu \phi_b'^\star \partial^\mu \phi_b'
+   \]
+   \[
+   + |b|^2 \partial_\mu \phi_a'^\star \partial^\mu \phi_a' - a b^\star \partial_\mu \phi_a'^\star \partial^\mu \phi_b' - a^\star b \partial_\mu \phi_b'^\star \partial^\mu \phi_a' + |a|^2 \partial_\mu \phi_b'^\star \partial^\mu \phi_b'
+   \]
+   Notice that the mixed terms cancel out, therefore:
+   \[
+   \mathcal L^{(a)} = (|a|^2 + |b|^2) \partial_\mu \phi_a'^\star \partial^\mu \phi_a' + (|b|^2 + |a|^2) \partial_\mu \phi_b'^\star \partial^\mu \phi_b' 
+   \]
+   Since \(|a|^2 + |b|^2 = 1\):
+   \[
+   \mathcal L^{(a)} = \partial_\mu \phi_a'^\star \partial^\mu \phi_a' + \partial_\mu \phi_b'^\star \partial^\mu \phi_b'
+   \]
+Thus, the Lagrangian \( \mathcal L^{(a)} \) retains its original form when expressed in terms of the primed fields.
+So, $U$ is also an internal symmetry, and we now want to express the conserved currents according to eq. \eqref{eq:conservedcurrent}. Now we have a 3-parameter symmetry so there will be 3 conserved currents $j^\mu_k$ with $k\in\{1,2,3\}$. 
+We start by writing the ${\rm SU}(2)$ transformation as 
+\begin{equation}
+    U=\exp (-i \theta_k \sigma^{(k)}/2) \approx  \mathbb I - \frac{i\theta_k }{2}\sigma^{(k)}, \label{eq:lieSU2}
+\end{equation}
+where $\sigma^{(k)}$ are the Pauli matrices and we have expanded to lowest order in $\theta_k$. 
+We want to express the variation of the fields as
+\begin{equation}
+\delta \phi_\ell = F_{\ell,k} \theta^k\label{eq:defF}
+\end{equation}
+now $k\in\{1,2,3\}$ and $\ell$ identifies the field as in the previous section. 
+Let's evaluate \eqref{eq:lieSU2} explicitly. Recall the Pauli matrices \(\sigma^{(k)}\) are:
+   \[
+   \sigma^{(1)} = \sigma^x = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}, \quad \sigma^{(2)} = \sigma^y = \begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix}, \quad \sigma^{(3)} = \sigma^z = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}
+   \]
+
+Now, we compute the expression \(i \theta_k \sigma^{(k)} \Phi\) for each \(k\) and then do the sum. 
+\begin{align}
+i \theta_1 \sigma^{(1)} \Phi &= i \theta_1 \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} \begin{pmatrix} \phi_a \\ \phi_b \end{pmatrix} = i \theta_1 \begin{pmatrix} \phi_b \\ \phi_a \end{pmatrix}
+\\
+i \theta_2 \sigma^{(2)} \Phi &= i \theta_2 \begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix} \begin{pmatrix} \phi_a \\ \phi_b \end{pmatrix} = i \theta_2 \begin{pmatrix} -i \phi_b \\ i \phi_a \end{pmatrix} = \theta_2 \begin{pmatrix} \phi_b \\ -\phi_a \end{pmatrix}
+\\
+i \theta_3 \sigma^{(3)} \Phi &= i \theta_3 \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix} \begin{pmatrix} \phi_a \\ \phi_b \end{pmatrix} = i \theta_3 \begin{pmatrix} \phi_a \\ -\phi_b \end{pmatrix}
+\end{align}
+Summing these up, we get:
+\[
+i \theta_k \sigma^{(k)} \Phi = i \theta_1 \begin{pmatrix} \phi_b \\ \phi_a \end{pmatrix} + \theta_2 \begin{pmatrix} \phi_b \\ -\phi_a \end{pmatrix} + i \theta_3 \begin{pmatrix} \phi_a \\ -\phi_b \end{pmatrix}
+\]
+Combining the terms and using \eqref{eq:lieSU2}, we get
+\[
+\begin{pmatrix}
+    \delta \phi_a \\
+    \delta \phi_b 
+\end{pmatrix}
+=
+-\frac{1}{2}i \theta_k \sigma^{(k)} \Phi = -\frac{1}{2}\begin{pmatrix} i \theta_1 \phi_b + \theta_2 \phi_b + i \theta_3 \phi_a \\ i \theta_1 \phi_a - \theta_2 \phi_a - i \theta_3 \phi_b \end{pmatrix}
+\]
+Similarly the variation of the conjugate fields is gotten by complex-conjugating eq. \eqref{eq:lieSU2}, and noticing that  $(\sigma^{(2)})^\star=-\sigma^{(2)}$, while the other two Pauli matrices are real. We get
+\begin{equation*}
+    \begin{pmatrix}
+    \delta \phi_a^\star \\
+    \delta \phi_b ^\star
+\end{pmatrix}
+=
++\frac{1}{2}i \theta_k( \sigma^{(k)} )^\star \Phi = \frac{1}{2}\begin{pmatrix} i \theta_1 \phi_b - \theta_2 \phi_b + i \theta_3 \phi_a \\ i \theta_1 \phi_a + \theta_2 \phi_a - i \theta_3 \phi_b \end{pmatrix}
+\end{equation*}
+Comparing the last two expressions with equation \eqref{eq:defF}
+\begin{align}
+F_{0,1} &= -\frac{i}{2} \phi_b, & F_{0,2} &= -\frac{1}{2} \phi_b, & F_{0,3} &= -\frac{i}{2} \phi_a, \\
+F_{2,1} &= -\frac{i}{2} \phi_a, & F_{2,2} &= \frac{1}{2} \phi_a, & F_{2,3} &= \frac{i}{2} \phi_b, \\
+F_{1,1} &= \frac{i}{2} \phi_b, & F_{1,2} &= -\frac{1}{2} \phi_b, & F_{1,3} &= \frac{i}{2} \phi_a, \\
+F_{3,1} &= \frac{i}{2} \phi_a, & F_{3,2} &= \frac{1}{2} \phi_a, & F_{3,3} &= -\frac{i}{2} \phi_b.
+\end{align}
+
+% \begin{equation}
+%    j^\mu_1 = \frac{i}{2}\left[ - \phi_b (\partial^\mu \phi_a^\star)  + \phi_b (\partial^\mu \phi_a)  - \phi_a (\partial^\mu \phi_b^\star) + \phi_a (\partial^\mu \phi_b) \right]\\
+   
+% \end{equation}
+Given the conserved current \( j^\mu_\ell \) and the Lagrangian derivatives, we need to find the expressions for the three conserved currents \( j^\mu_1 \), \( j^\mu_2 \), and \( j^\mu_3 \). The conserved current is given by:
+
+\[ j^\mu_\ell = -\frac{\partial \mathcal L}{\partial ( \partial_\mu \phi_k)} F_{k,\ell} \]
+
+
+
+For \(\ell = 1\):
+   \[
+   \begin{aligned}
+   j^\mu_1 &= -\left( \frac{\partial \mathcal{L}}{\partial (\partial_\mu \phi_0)} F_{0,1} + \frac{\partial \mathcal{L}}{\partial (\partial_\mu \phi_1)} F_{1,1} + \frac{\partial \mathcal{L}}{\partial (\partial_\mu \phi_2)} F_{2,1} + \frac{\partial \mathcal{L}}{\partial (\partial_\mu \phi_3)} F_{3,1} \right) \\
+   &= -\left( \partial^\mu \phi_a^\star \cdot \left( -\frac{i}{2} \phi_b \right) + \partial^\mu \phi_a \cdot \frac{i}{2} \phi_b + \partial^\mu \phi_b^\star \cdot \left( -\frac{i}{2} \phi_a \right) + \partial^\mu \phi_b \cdot \frac{i}{2} \phi_a \right) \\
+   &= -\left( -\frac{i}{2} \partial^\mu \phi_a^\star \phi_b + \frac{i}{2} \partial^\mu \phi_a \phi_b - \frac{i}{2} \partial^\mu \phi_b^\star \phi_a + \frac{i}{2} \partial^\mu \phi_b \phi_a \right) \\
+   &= \frac{i}{2} \left( \partial^\mu \phi_a^\star \phi_b - \partial^\mu \phi_a \phi_b + \partial^\mu \phi_b^\star \phi_a - \partial^\mu \phi_b \phi_a \right).
+   \end{aligned}
+   \]
+For \(\ell = 2\):
+   \[
+   \begin{aligned}
+   j^\mu_2 &= -\left( \frac{\partial \mathcal{L}}{\partial (\partial_\mu \phi_0)} F_{0,2} + \frac{\partial \mathcal{L}}{\partial (\partial_\mu \phi_1)} F_{1,2} + \frac{\partial \mathcal{L}}{\partial (\partial_\mu \phi_2)} F_{2,2} + \frac{\partial \mathcal{L}}{\partial (\partial_\mu \phi_3)} F_{3,2} \right) \\
+   &= -\left( \partial^\mu \phi_a^\star \cdot \left( -\frac{1}{2} \phi_b \right) + \partial^\mu \phi_a \cdot \left( -\frac{1}{2} \phi_b \right) + \partial^\mu \phi_b^\star \cdot \frac{1}{2} \phi_a + \partial^\mu \phi_b \cdot \frac{1}{2} \phi_a \right) \\
+   &= -\left( -\frac{1}{2} \partial^\mu \phi_a^\star \phi_b - \frac{1}{2} \partial^\mu \phi_a \phi_b + \frac{1}{2} \partial^\mu \phi_b^\star \phi_a + \frac{1}{2} \partial^\mu \phi_b \phi_a \right) \\
+   &= \frac{1}{2} \left( \partial^\mu \phi_a^\star \phi_b + \partial^\mu \phi_a \phi_b - \partial^\mu \phi_b^\star \phi_a - \partial^\mu \phi_b \phi_a \right).
+   \end{aligned}
+   \]
+For \(\ell = 3\):
+   \[
+   \begin{aligned}
+   j^\mu_3 &= -\left( \frac{\partial \mathcal{L}}{\partial (\partial_\mu \phi_0)} F_{0,3} + \frac{\partial \mathcal{L}}{\partial (\partial_\mu \phi_1)} F_{1,3} + \frac{\partial \mathcal{L}}{\partial (\partial_\mu \phi_2)} F_{2,3} + \frac{\partial \mathcal{L}}{\partial (\partial_\mu \phi_3)} F_{3,3} \right) \\
+   &= -\left( \partial^\mu \phi_a^\star \cdot \left( -\frac{i}{2} \phi_a \right) + \partial^\mu \phi_a \cdot \frac{i}{2} \phi_a + \partial^\mu \phi_b^\star \cdot \frac{i}{2} \phi_b + \partial^\mu \phi_b \cdot \left( -\frac{i}{2} \phi_b \right) \right) \\
+   &= -\left( -\frac{i}{2} \partial^\mu \phi_a^\star \phi_a + \frac{i}{2} \partial^\mu \phi_a \phi_a + \frac{i}{2} \partial^\mu \phi_b^\star \phi_b - \frac{i}{2} \partial^\mu \phi_b \phi_b \right) \\
+   &= \frac{i}{2} \left( \partial^\mu \phi_a^\star \phi_a - \partial^\mu \phi_a \phi_a - \partial^\mu \phi_b^\star \phi_b + \partial^\mu \phi_b \phi_b \right).
+   \end{aligned}
+   \]
+
+Thus, the conserved currents \( j^\mu_1 \), \( j^\mu_2 \), and \( j^\mu_3 \)  are:
+\[
+\begin{aligned}
+j^\mu_1 &= \frac{i}{2} \left( \partial^\mu \phi_a^\star \phi_b - \partial^\mu \phi_a \phi_b + \partial^\mu \phi_b^\star \phi_a - \partial^\mu \phi_b \phi_a \right), \\
+j^\mu_2 &= \frac{1}{2} \left( \partial^\mu \phi_a^\star \phi_b + \partial^\mu \phi_a \phi_b - \partial^\mu \phi_b^\star \phi_a - \partial^\mu \phi_b \phi_a \right), \\
+j^\mu_3 &= \frac{i}{2} \left( \partial^\mu \phi_a^\star \phi_a - \partial^\mu \phi_a \phi_a - \partial^\mu \phi_b^\star \phi_b + \partial^\mu \phi_b \phi_b \right).
+\end{aligned}
+\]
+The conserved charges are gotten by setting $j=0$. It's useful to introduce the conjugate momenta $\pi_a$ and $\pi_b$
+\begin{align*} \pi_a = \frac{\partial \mathcal L}{\partial(\partial_0 \phi_a)}= \partial^0 \phi_a^\star~~;~~~~
+    \pi_a^\star = \frac{\partial \mathcal L}{\partial(\partial_0 \phi_a^\star)}= \partial^0 \phi_a  \\
+       \pi_b =  \frac{\partial \mathcal L}{\partial(\partial_0 \phi_b)}= \partial^0 \phi_b^\star~~;~~~~
+   \pi_b^\star =  \frac{\partial \mathcal L}{\partial(\partial_0 \phi_b^\star)}= \partial^0 \phi_b
+\end{align*}
+so the time-component of the currents can be written more compactly:
+\begin{align*}
+j^0_1 &= \frac{i}{2} \left( \pi_a \phi_b - \pi_a^\star \phi_b + \pi_b \phi_a - \pi_b^\star \phi_a \right)\\ 
+j^0_2 &= \frac{1}{2} \left( \pi_a \phi_b + \pi_a^\star \phi_b - \pi_b \phi_a - \pi_b^\star \phi_a \right)\\
+j^0_3 &= \frac{i}{2} \left( \pi_a \phi_a - \pi_a^\star \phi_a - \pi_b \phi_b + \pi_b^\star \phi_b \right)
+\end{align*}
+and it's possible to notice that this can be further simplified to 
+\[
+j_k^0 = \frac{i}{2} ( \phi^\star _\mu (\sigma^k)_{\mu\nu} \pi_\nu^\star - \pi_\mu(\sigma^k)_{\mu\nu}\phi_\nu )
+\]
+where now $\mu$ and $\nu$ are indices that run over the two fields $a$ and $b$.
+In order to find the commutation relation between the charges, we promote the fields to operators as above, 
+and use equations \eqref{eq:phia}, \eqref{eq:phib}, \eqref{eq:timederivative_of_phia}, \eqref{eq:timederivative_of_phib} to decompose fields using 
+creation and annihilation operators.
+
+
+
