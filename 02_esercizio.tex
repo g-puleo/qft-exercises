@@ -103,6 +103,7 @@ Then note that upon integration in $d^3 x$ we get Dirac deltas as follows:
     \int d^3 x ~ e^{-i(p\pm p')\cdot x} = (2\pi)^3 \delta_{(3)}(\vec p\pm {\vec p}~') e^{-i (E_p\pm E_{p'})t}\\
     \int d^3 x ~ e^{+i(p\pm p')\cdot x} = (2\pi)^3 \delta_{(3)}(\vec p\pm {\vec p}~') e^{+i (E_p\pm E_{p'})t}
 \end{split}
+\label{eq:diracDeltas}
 \end{equation}
 We can plug this in and get
 \begin{align*}
@@ -309,7 +310,8 @@ and it's possible to notice that this can be further simplified to
 \[
 j_k^0 = -\frac{i}{2} ( \phi^\star _\mu (\sigma^k)_{\mu\nu} \pi_\nu^\star - \pi_\mu(\sigma^k)_{\mu\nu}\phi_\nu )
 \]
-where now $\mu$ and $\nu$ are indices that run over the two fields $a$ and $b$. This expression is neater to work with and it is equal (up to a sign) to the one in Peskin, Schr\"{o}der's book, problem 2.2 (d).
+where now $\mu$ and $\nu$ are indices that run over the two fields $a$ and $b$. When $a$ and $b$ are index of pauli matrix, they refer to 1 and 2, respectively.
+ This expression is neater to work with and it is equal (up to a sign) to the one in Peskin, Schr\"{o}der's book, problem 2.2 (d).
 In order to find the commutation relation between the charges, we promote the fields to operators as above, 
 and use equations \eqref{eq:phia}, \eqref{eq:phib}, \eqref{eq:timederivative_of_phia}, \eqref{eq:timederivative_of_phib} to decompose fields using 
 creation and annihilation operators.
@@ -317,7 +319,7 @@ I will stick to Peskin and Schr\"{o}der's result without the minus sign.
 \[
 \hat j_k^0 = \frac{i}{2} :( \hat \phi^\dagger _\mu (\sigma^k)_{\mu\nu}( \partial^0 \hat \phi_\nu) - (\partial^0 \hat \phi_\mu^\dagger)(\sigma^k)_{\mu\nu}\hat \phi_\nu ):
 \]
-We focus on the first term, and forget the $i/2$ factor for now.
+We focus on the first term, and forget the $i/2$ factor and normal ordering for a moment. We will restore them at the end.
 We have
 \begin{equation}
 \begin{split}
@@ -341,13 +343,138 @@ Similarly, the second term:
     &\quad + E_p \hat{\alpha}_\mu^\dagger (p) \sigma^k_{\mu\nu} \hat{\beta}_\nu^\dagger (p') e^{i(p+p')\cdot x} \bigg]
 \end{split}
 \end{equation}
-Subtracting the two terms  and integrating in $d^3 x$ we get Dirac deltas as follows:
-\begin{equation}
-\begin{split}
+We proceed by subtracting the two terms  and integrating over $d^3 x$,  we get Dirac deltas as described by equation \eqref{eq:diracDeltas}, then we carry out the integration over $d^3 p'$ and use that $E_p=E_{-p}$ to simplify the resulting integrals. 
+\begin{align*}
     \hat Q^k &= \frac{i}{(2\pi)^6}  \int d^3 x \left\{  \int \frac{d^3 p}{\sqrt{2E_p}} \int \frac{d^3 p'}{\sqrt{2E_{p'}}} E_{p'}  \sigma^k_{\mu\nu} \bigg[  \hat{\alpha}_\mu^\dagger (p) \hat{\beta}_\nu^\dagger (p') e^{i(p+p')\cdot x} \right. \\
     &\quad -  \hat{\alpha}_\mu^\dagger (p) \hat{\alpha}_\nu (p') e^{i(p-p')\cdot x} + \quad +  \hat{\beta}_\mu (p) \hat{\beta}_\nu^\dagger (p') e^{-i(p-p')\cdot x} \\
     &\quad -  \hat{\beta}_\mu (p) \hat{\alpha}_\nu (p') e^{-i(p+p')\cdot x} + \hat{\beta}_\mu (p) \hat{\alpha}_\nu (p') e^{-i(p+p')\cdot x} \\
     &\quad + \hat{\beta}_\mu (p) \hat{\beta}_\nu^\dagger (p') e^{-i(p-p')\cdot x}  - \hat{\alpha}_\mu^\dagger (p) \hat{\alpha}_\nu (p') e^{i(p-p')\cdot x} \\
-    &\quad \left. - \hat{\alpha}_\mu^\dagger (p) \hat{\beta}_\nu^\dagger (p') e^{i(p+p')\cdot x} \bigg]\right\}
+    &\quad \left. - \hat{\alpha}_\mu^\dagger (p) \hat{\beta}_\nu^\dagger (p') e^{i(p+p')\cdot x} \bigg]\right\}\\
+    &= \frac{i}{(2\pi)^3} \int \frac{d^3 p}{\sqrt{2E_p}} \int \frac{d^3 p'}{\sqrt{2E_{p'}}} E_{p'} \sigma^k_{\mu\nu} \bigg\{ \delta_{(3)}(\vec{p}+\vec{p}') e^{i(E_p+E_{p'})t} \hat{\alpha}_\mu^\dagger (p) \hat{\beta}_\nu^\dagger (p') \\
+    &\quad - \delta_{(3)}(\vec{p}-\vec{p}') e^{i(E_p-E_{p'})t} \hat{\alpha}_\mu^\dagger (p) \hat{\alpha}_\nu (p')+ \delta_{(3)}(\vec{p}-\vec{p}') e^{-i(E_p-E_{p'})t} \hat{\beta}_\mu (p) \hat{\beta}_\nu^\dagger (p') \\
+    &\quad - \delta_{(3)}(\vec{p}+\vec{p}') e^{-i(E_p+E_{p'})t} \hat{\beta}_\mu (p) \hat{\alpha}_\nu (p') + \delta_{(3)}(\vec{p}+\vec{p}') e^{-i(E_p+E_{p'})t} \hat{\beta}_\mu (p) \hat{\alpha}_\nu (p') \\
+    &\quad + \delta_{(3)}(\vec{p}-\vec{p}') e^{-i(E_p-E_{p'})t} \hat{\beta}_\mu (p) \hat{\beta}_\nu^\dagger (p') - \delta_{(3)}(\vec{p}-\vec{p}') e^{i(E_p-E_{p'})t} \hat{\alpha}_\mu^\dagger (p) \hat{\alpha}_\nu (p') \\
+    &\quad - \delta_{(3)}(\vec{p}+\vec{p}') e^{i(E_p+E_{p'})t} \hat{\alpha}_\mu^\dagger (p) \hat{\beta}_\nu^\dagger (p') \bigg\}\\
+    %%  Now integration over p' is done
+    &= \frac{i}{(2\pi)^3} \int \frac{d^3 p}{2E_p} E_p \sigma^k_{\mu\nu} \bigg\{ e^{i(E_p+E_p)t} \hat{\alpha}_\mu^\dagger (p) \hat{\beta}_\nu^\dagger (-p) \\
+    &\quad - e^{i(E_p-E_p)t} \hat{\alpha}_\mu^\dagger (p) \hat{\alpha}_\nu (p) + e^{-i(E_p-E_p)t} \hat{\beta}_\mu (p) \hat{\beta}_\nu^\dagger (p) \\
+    &\quad - e^{-i(E_p+E_p)t} \hat{\beta}_\mu (p) \hat{\alpha}_\nu (-p)  + e^{-i(E_p+E_p)t} \hat{\beta}_\mu (p) \hat{\alpha}_\nu (-p) \\
+    &\quad + e^{-i(E_p-E_p)t} \hat{\beta}_\mu (p) \hat{\beta}_\nu^\dagger (p) - e^{i(E_p-E_p)t} \hat{\alpha}_\mu^\dagger (p) \hat{\alpha}_\nu (p) \\
+    &\quad - e^{i(E_p+E_p)t} \hat{\alpha}_\mu^\dagger (p) \hat{\beta}_\nu^\dagger (-p) \bigg\}.
+\end{align*}
+We can simplify this expression further, by canceling out some terms, and combining like terms:
+\[
+\begin{split}
+    \hat{Q}^k &= \frac{i}{(2\pi)^3} \int \frac{d^3 p}{2E_p} E_p \sigma^k_{\mu\nu} \bigg\{ \cancel{e^{2iE_pt} \hat{\alpha}_\mu^\dagger (p) \hat{\beta}_\nu^\dagger (-p)}  - \hat{\alpha}_\mu^\dagger (p) \hat{\alpha}_\nu (p) + \hat{\beta}_\mu (p) \hat{\beta}_\nu^\dagger (p) \\
+    &\cancel{\quad - e^{-2iE_pt} \hat{\beta}_\mu (p) \hat{\alpha}_\nu (-p)} +\cancel{ e^{-2iE_pt} \hat{\beta}_\mu (p) \hat{\alpha}_\nu (-p)}  + \hat{\beta}_\mu (p) \hat{\beta}_\nu^\dagger (p)  - \hat{\alpha}_\mu^\dagger (p) \hat{\alpha}_\nu (p) \\
+    &\quad - \cancel{e^{2iE_pt} \hat{\alpha}_\mu^\dagger (p) \hat{\beta}_\nu^\dagger (-p)} \bigg\}\\
+    &=\frac{i}{(2\pi)^3} \int d^3 p\sigma^k_{\mu\nu} \bigg( \hat{\beta}_\mu (p) \hat{\beta}_\nu^\dagger (p) - \hat{\alpha}_\mu^\dagger (p) \hat{\alpha}_\nu (p) \bigg).
 \end{split}
-\end{equation}
+\]
+Restoring the $i/2$ factor and normal ordering, we get the final expression for the conserved charge:
+\[
+    \hat Q_k =-\frac{1}{2} \frac{1}{(2\pi)^3} \int d^3 p\sigma^k_{\mu\nu} \bigg( \hat{\beta}_\nu^\dagger (p) \hat{\beta}_\mu (p)  - \hat{\alpha}_\mu^\dagger (p) \hat{\alpha}_\nu (p) \bigg).
+\]
+Now we want to compute the commutation relations between these charges.
+I will take out the factors in front and restore them in the end, for simplicity of writing. 
+\begin{align*}
+[\hat{Q}_k, \hat{Q}_\ell] &= \int d^3 p \int d^3 q \, \sigma^k_{\mu\nu} \sigma^\ell_{\rho\eta} \left[ \left( \hat{\beta}_\nu^\dagger (p) \hat{\beta}_\mu (p) - \hat{\alpha}_\mu^\dagger (p) \hat{\alpha}_\nu (p) \right), \left( \hat{\beta}_\eta^\dagger (q) \hat{\beta}_\rho (q) - \hat{\alpha}_\rho^\dagger (q) \hat{\alpha}_\eta (q) \right) \right]\\
+   &=\int d^3 p \int d^3 q \, \sigma^k_{\mu\nu} \sigma^\ell_{\rho\eta} \bigg( \left[ \hat{\beta}_\nu^\dagger (p) \hat{\beta}_\mu (p), \hat{\beta}_\eta^\dagger (q) \hat{\beta}_\rho (q) \right] - \left[ \hat{\beta}_\nu^\dagger (p) \hat{\beta}_\mu (p), \hat{\alpha}_\rho^\dagger (q) \hat{\alpha}_\eta (q) \right] \\
+    &\quad - \left[ \hat{\alpha}_\mu^\dagger (p) \hat{\alpha}_\nu (p), \hat{\beta}_\eta^\dagger (q) \hat{\beta}_\rho (q) \right] + \left[ \hat{\alpha}_\mu^\dagger (p) \hat{\alpha}_\nu (p), \hat{\alpha}_\rho^\dagger (q) \hat{\alpha}_\eta (q) \right] \bigg)
+    \label{eq:lotofcommutators}
+\end{align*}
+There are now a lot of commutators that we can simplify using the following commutation relations:
+\begin{align}
+[\hat{\alpha}_\mu (p), \hat{\alpha}_\nu^\dagger (q)] &= [\hat{\beta}_\mu (p), \hat{\beta}_\nu^\dagger (q)] = (2\pi)^3 \delta_{(3)}(\vec{p}-\vec{q}) \delta_{\mu\nu} \\
+[\hat{\alpha}_\mu (p), \hat{\beta}_\nu (q)] &= [\hat{\alpha}_\mu (p), \hat{\beta}_\nu^\dagger (q)] = [\hat{\alpha}_\mu^\dagger (p), \hat{\beta}_\nu (q)] = [\hat{\alpha}_\mu^\dagger (p), \hat{\beta}_\nu^\dagger (q)] = 0
+\end{align}
+The second and third commutator in equation \eqref{eq:lotofcommutators} vanish, and the first and fourth commutators are non-zero. We can now simplify them using this property:
+% Noting that \( - e^{-2iE_pt} \hat{\beta}_\mu (p) \hat{\alpha}_\nu (-p) + e^{-2iE_pt} \hat{\beta}_\mu (p) \hat{\alpha}_\nu (-p) = 0 \):
+\begin{equation*}
+    [AB, CD] =A[B, C]D + [A, C]BD + CA[B, D] + C[A, D]B 
+\end{equation*}
+We get
+\[ 
+\begin{split}
+    %% First commutator
+    &\left[ \hat{\beta}_\nu^\dagger (p) \hat{\beta}_\mu (p), \hat{\beta}_\eta^\dagger (q) \hat{\beta}_\rho (q) \right] = \hat{\beta}_\nu^\dagger (p) \left[ \hat{\beta}_\mu (p), \hat{\beta}_\eta^\dagger (q) \right] \hat{\beta}_\rho (q) + \left[ \hat{\beta}_\nu^\dagger (p), \hat{\beta}_\eta^\dagger (q) \right] \hat{\beta}_\mu (p) \hat{\beta}_\rho (q) \\
+    &\quad + \hat{\beta}_\eta^\dagger (q)  \hat{\beta}_\nu^\dagger (p)\left[ \hat{\beta}_\mu (p),\hat{\beta}_\rho (q) \right]  +  \hat{\beta}_\eta^\dagger (q) \left[ \hat{\beta}_\nu^\dagger (p), \hat{\beta}_\rho (q) \right] \hat{\beta}_\mu (p) \\
+    &= (2\pi)^3 \delta_{(3)}(\vec{p}-\vec{q}) \delta_{\mu\eta} \hat{\beta}_\nu^\dagger (p) \hat{\beta}_\rho (q) - (2\pi)^3 \delta_{(3)}(\vec{p}-\vec{q}) \delta_{\nu\rho}  \hat{\beta}_\eta^\dagger (q) \hat{\beta}_\mu (p) \\
+    %% Now the other commutator
+    &\left[ \hat{\alpha}_\mu^\dagger (p) \hat{\alpha}_\nu (p), \hat{\alpha}_\rho^\dagger (q) \hat{\alpha}_\eta (q) \right] = \hat{\alpha}_\mu^\dagger (p) \left[ \hat{\alpha}_\nu (p), \hat{\alpha}_\rho^\dagger (q) \right] \hat{\alpha}_\eta (q) + \left[ \hat{\alpha}_\mu^\dagger (p), \hat{\alpha}_\rho^\dagger (q) \right] \hat{\alpha}_\nu (p) \hat{\alpha}_\eta (q) \\
+    &\quad + \hat{\alpha}_\rho^\dagger (q)  \hat{\alpha}_\mu^\dagger (p)\left[\hat{\alpha}_\nu (p), \hat{\alpha}_\eta (q) \right]  +  \hat{\alpha}_\rho^\dagger (q) \left[ \hat{\alpha}_\mu^\dagger (p), \hat{\alpha}_\eta (q) \right] \hat{\alpha}_\nu (p) \\
+    &= (2\pi)^3 \delta_{(3)}(\vec{p}-\vec{q}) \delta_{\nu\rho} \hat{\alpha}_\mu^\dagger (p) \hat{\alpha}_\eta (q) - (2\pi)^3 \delta_{(3)}(\vec{p}-\vec{q}) \delta_{\mu\eta}  \hat{\alpha}_\rho^\dagger (q)\hat{\alpha}_\nu (p) 
+\end{split}
+\]
+So, the commutator can be simplified as follows:
+\[ 
+\begin{split}
+    [\hat{Q}_k, \hat{Q}_\ell] &= \int d^3 p \int d^3 q \, \sigma^k_{\mu\nu} \sigma^\ell_{\rho\eta} \bigg( \left[ \hat{\beta}_\nu^\dagger (p) \hat{\beta}_\mu (p), \hat{\beta}_\eta^\dagger (q) \hat{\beta}_\rho (q) \right] + \left[ \hat{\alpha}_\mu^\dagger (p) \hat{\alpha}_\nu (p), \hat{\alpha}_\rho^\dagger (q) \hat{\alpha}_\eta (q) \right] \bigg) \\
+    %%
+    &= \int d^3 p \int d^3 q \, \sigma^k_{\mu\nu} \sigma^\ell_{\rho\eta} \bigg( (2\pi)^3 \delta_{(3)}(\vec{p}-\vec{q}) \delta_{\mu\eta} \hat{\beta}_\nu^\dagger (p) \hat{\beta}_\rho (q) - (2\pi)^3 \delta_{(3)}(\vec{p}-\vec{q}) \delta_{\nu\rho} \hat{\beta}_\eta^\dagger (q) \hat{\beta}_\mu (p)   \\
+    &\quad - (2\pi)^3 \delta_{(3)}(\vec{p}-\vec{q}) \delta_{\nu\rho} \hat{\alpha}_\mu^\dagger (p) \hat{\alpha}_\eta (q) + (2\pi)^3 \delta_{(3)}(\vec{p}-\vec{q}) \delta_{\mu\eta}\hat{\alpha}_\rho^\dagger (q) \hat{\alpha}_\nu (p)  \bigg)\\
+    %%
+    &= (2\pi)^3\int d^3 p \,\bigg( \sigma^k_{\mu\nu} \sigma^\ell_{\rho\eta} \delta_{\mu\eta} \hat{\beta}_\nu^\dagger (p) \hat{\beta}_\rho (p) 
+    -\sigma^k_{\mu\nu} \sigma^\ell_{\rho\eta} \delta_{\nu\rho}\hat{\beta}_\eta^\dagger (p)\hat{\beta}_\mu (p)   \\
+    &\quad + \sigma^k_{\mu\nu} \sigma^\ell_{\rho\eta} \delta_{\nu\rho} \hat{\alpha}_\mu^\dagger (p) \hat{\alpha}_\eta (p) 
+    - \sigma^k_{\mu\nu} \sigma^\ell_{\rho\eta} \delta_{\mu\eta}\hat{\alpha}_\rho^\dagger (p)  \hat{\alpha}_\nu (p)  \bigg)\\
+    %
+    %
+    %
+    &= (2\pi)^3 \int d^3 p \,\bigg( \sigma^k_{\mu\nu} \sigma^\ell_{\rho\mu} \hat{\beta}_\nu^\dagger (p) \hat{\beta}_\rho (p) 
+    -\sigma^k_{\mu\nu} \sigma^\ell_{\nu\eta}  \hat{\beta}_\eta^\dagger (p)\hat{\beta}_\mu (p)  \\
+    &\quad + \sigma^k_{\mu\nu} \sigma^\ell_{\nu\eta}  \hat{\alpha}_\mu^\dagger (p) \hat{\alpha}_\eta (p) 
+    - \sigma^k_{\mu\nu} \sigma^\ell_{\rho\mu}  \hat{\alpha}_\rho^\dagger (p) \hat{\alpha}_\nu (p) \bigg) \\
+    % FINAL EXTRAVAGANZA %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    &= (2\pi)^3 \int d^3 p \,\bigg(  {(\sigma^\ell \sigma^k)}_{\rho\nu} \hat{\beta}_\nu^\dagger (p) \hat{\beta}_\rho (p) 
+    -{(\sigma^k \sigma^\ell)}_{\mu\eta}  \hat{\beta}_\eta^\dagger (p)\hat{\beta}_\mu (p)  \\
+    &\quad + (\sigma^k \sigma^\ell)_{\mu\eta}  \hat{\alpha}_\mu^\dagger (p) \hat{\alpha}_\eta (p) 
+    - (\sigma^\ell \sigma^k)_{\rho\nu}  \hat{\alpha}_\rho^\dagger (p) \hat{\alpha}_\nu (p) \bigg) \\
+    %
+    %
+    &= (2\pi)^3 \int d^3 p \,\bigg(  {[\sigma^\ell,\sigma^k]}_{\rho\nu} \hat{\beta}_\nu^\dagger (p) \hat{\beta}_\rho (p)  
+    - [\sigma^\ell \sigma^k]_{\rho\nu}  \hat{\alpha}_\rho^\dagger (p) \hat{\alpha}_\nu (p) \bigg) \\
+    %
+    &=(2\pi)^3 {[\sigma^\ell,\sigma^k]}_{\rho\nu} \int d^3 p \,   \bigg( \hat{\beta}_\nu^\dagger (p) \hat{\beta}_\rho (p)  
+    -   \hat{\alpha}_\rho^\dagger (p) \hat{\alpha}_\nu (p) \bigg) 
+\end{split}
+\]
+Now I restore the pre-factor $-1/(2(2\pi)^3)$ and use the Pauli matrix commutation relation:
+\begin{align*}
+[\hat Q_k, \hat Q_\ell] &=
+ \left(-\frac{1}{2(2\pi)^3}\right)^2 (2\pi^3) 2i \epsilon_{\ell k j} 
+    \sigma^j_{\rho\nu} \int d^3 p \, \left( \hat{\beta}_\nu^\dagger (p) \hat{\beta}_\rho (p) - \hat{\alpha}_\rho^\dagger (p) \hat{\alpha}_\nu (p) \right) \\
+    &= i \epsilon_{ k\ell j} \sigma^j_{\rho\nu} \left( -\frac{1}{2(2\pi)^3} \right) \int d^3 p \, \left( \hat{\beta}_\nu^\dagger (p) \hat{\beta}_\rho (p) - \hat{\alpha}_\rho^\dagger (p) \hat{\alpha}_\nu (p) \right)\\ 
+    &= i \epsilon_{ k\ell j}  \hat Q_j.
+\end{align*}
+Which means that the conserved charges obey the SU(2) algebra.
+% Simplify further using the Kronecker deltas
+% \[ 
+% \begin{split}
+%     [\hat{Q}_k, \hat{Q}_\ell] &= \int d^3 p \, \bigg( \sigma^k_{\mu\nu} \sigma^\ell_{\mu\nu} \hat{\beta}_\nu^\dagger (p) \hat{\beta}_\nu (p) - \sigma^k_{\mu\nu} \sigma^\ell_{\nu\mu} \hat{\beta}_\nu^\dagger (p) \hat{\beta}_\mu (p) \\
+%     &\quad - \sigma^k_{\mu\nu} \sigma^\ell_{\nu\mu} \hat{\alpha}_\mu^\dagger (p) \hat{\alpha}_\nu (p) + \sigma^k_{\mu\nu} \sigma^\ell_{\mu\nu} \hat{\alpha}_\nu^\dagger (p) \hat{\alpha}_\nu (p) \bigg).
+% \end{split}
+% \[
+% \begin{split}
+%     \hat{Q}^k &= \frac{i}{(2\pi)^3} \int \frac{d^3 p}{\sqrt{2E_p}} E_p \sigma^k_{\mu\nu} \bigg\{ e^{2iE_pt} \hat{\alpha}_\mu^\dagger (p) \hat{\beta}_\nu^\dagger (-p) - \hat{\alpha}_\mu^\dagger (p) \hat{\alpha}_\nu (p) \\
+%     &\quad + \hat{\beta}_\mu (p) \hat{\beta}_\nu^\dagger (p) + \hat{\beta}_\mu (p) \hat{\beta}_\nu^\dagger (p) \\
+%     &\quad - \hat{\alpha}_\mu^\dagger (p) \hat{\alpha}_\nu (p) - e^{2iE_pt} \hat{\alpha}_\mu^\dagger (p) \hat{\beta}_\nu^\dagger (-p) \bigg\}.
+% \end{split}
+% \]
+
+
+% \[
+% \begin{split}
+%     \hat{Q}^k &= \frac{i}{(2\pi)^3} \int \frac{d^3 p}{\sqrt{2E_p}} E_p \sigma^k_{\mu\nu} \bigg\{ 2\hat{\beta}_\mu
+
+%  (p) \hat{\beta}_\nu^\dagger (p) - 2\hat{\alpha}_\mu^\dagger (p) \hat{\alpha}_\nu (p) \bigg\}.
+% \end{split}
+% \]
+
+% Thus, the final expression is:
+
+% \[
+% \begin{split}
+%     \hat{Q}^k &= \frac{2i}{(2\pi)^3} \int \frac{d^3 p}{\sqrt{2E_p}} E_p \sigma^k_{\mu\nu} \bigg( \hat{\beta}_\mu (p) \hat{\beta}_\nu^\dagger (p) - \hat{\alpha}_\mu^\dagger (p) \hat{\alpha}_\nu (p) \bigg).
+% \end{split}
+% \]
